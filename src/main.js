@@ -8,9 +8,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import router from './router'
 import "babel-polyfill";
-var VueCookie = require('vue-cookie')
 
-Vue.use(VueCookie)
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false

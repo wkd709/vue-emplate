@@ -11,6 +11,7 @@ const state = {
     isFooterOne: true,
     title: '',
     show: true,
+    token: '1',
 }
 
 const mutations = {
