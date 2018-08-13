@@ -4,9 +4,9 @@
   </div>
 </template>
 <script>
-  import * as _ from '../../util/tool'
-  import {storageUtil} from '../../util/storage'
-  import api from '../../fetch/api'
+  import * as _ from '../util/tool'
+  import {storageUtil} from '../util/storage'
+  import api from '../fetch/api'
   import {mapActions, mapMutations, mapState} from 'vuex'
   export default {
     data() {
@@ -15,7 +15,7 @@
     },
     watch: {
       '$route': function () {
-        this.getData();
+        // this.getData();
       }
     },
     mounted() {
@@ -49,5 +49,5 @@
   }
 </script>
 <style lang="scss" scoped>
-@import '../../assets/scss/pages/index.scss'
+@import '../assets/scss/pages/index.scss'
 </style>

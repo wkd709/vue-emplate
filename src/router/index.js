@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const index = r => require.ensure([], () => r(require('@/views/frontBundle/index.vue')), 'main-pages')
+const index = r => require.ensure([], () => r(require('@/views/index.vue')), 'main-pages')
 
 Vue.use(Router)
 

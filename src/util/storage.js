@@ -13,7 +13,7 @@ var storageUtil = {
             var value = sessionStorage.getItem(key);
             try {
                 value = JSON.parse(value);
-            }catch (e){
+            } catch (e) {
 
             }
             return value;
