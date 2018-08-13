@@ -1,9 +1,10 @@
 import axios from 'axios'
 import qs from 'qs'
-// import * as _ from '../util/tool'
 import { Message } from 'element-ui'
 import store from '@/vuex/store';
 import router from '@/router'
+import {storageUtil} from '@/util/storage'
+
 // axios 配置
 axios.defaults.timeout = 10000;//请求超时时间
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
@@ -54,7 +55,7 @@ axios.interceptors.response.use(
                 // 401: 未登录
                 // 未登录则跳转登录页面，并携带当前页面的路径
                 // 在登录成功后返回当前页面，这一步需要在登录页操作。     
-                case 401:         
+                case 401:
                     router.replace({
                         path: '/login',
                         query: { 
@@ -65,7 +66,7 @@ axios.interceptors.response.use(
                 // 403 token过期
                 // 登录过期对用户进行提示
                 // 清除本地token和清空vuex中token对象
-                // 跳转登录页面                
+                // 跳转登录页面
                 case 403:
                     Message({
                         type: 'error',
@@ -74,17 +75,17 @@ axios.interceptors.response.use(
                     });
 
                     // 清除token
-                    localStorage.removeItem('token');
+                    storageUtil.removeSession('token');
                     store.commit('loginSuccess', null);
-                    // 跳转登录页面，并将要浏览的页面fullPath传过去，登录成功后跳转需要访问的页面 
-                    setTimeout(() => {                        
-                        router.replace({                            
-                            path: '/login',                            
-                            query: { 
-                                redirect: router.currentRoute.fullPath 
+                    // 跳转登录页面，并将要浏览的页面fullPath传过去，登录成功后跳转需要访问的页面
+                    setTimeout(() => {
+                        router.replace({
+                            path: '/login',
+                            query: {
+                                redirect: router.currentRoute.fullPath
                             }
-                        });                    
-                    }, 1000);                    
+                        });
+                    }, 1000);
                     break;
                 // 404请求不存在
                 case 404:
