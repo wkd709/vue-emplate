@@ -17,11 +17,11 @@ axios.defaults.withCredentials = true
 /* eslint-disable no-new */
 
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {//to 正要去的路由 from正要离开的路由
   if (to.matched.length === 0) {//如果未匹配到路由
-    from.name ? next({ name:from.name }) : next({ path: '/' });//如果上级也未匹配到路由则跳转首页页面，如果上级能匹配到则转上级路由
-  } else {
-    next();//如果匹配到正确跳转
+    from.name ? next({ path: from.fullPath }) : next({ path: '/' });
+  } else {//如果匹配到正确跳转
+    next();
   }
 });
 

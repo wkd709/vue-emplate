@@ -20,48 +20,6 @@ export function message(type,content,close) {
 
 
 /**
- * cookie 设置
- *     cname 存入的参数名
- *     value  存入的值
- *     exdays  过期时间
- */
-
-export function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + escape(cvalue) + "; " + expires+';path=/';
-}
-
-/**
- * cookie 获取
- */
-
-export function getCookie(){
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        // if (c.indexOf('JSESSIONID') != -1) return unescape(c.split('=')[1]);
-        if (c.indexOf('JSESSIONID') != -1) {
-            return unescape(c.split('=')[1]);
-        } else if (c.indexOf('treasureFinal') != -1) {
-            return unescape(c.split('=')[1]);
-        }
-    }
-    return "";
-}
-
-
-/**
- * cookie 删除
- */
-
-export function delCookie(name){
-   setCookie('JSESSIONID', "", -1);
-   setCookie('treasureFinal', "", -1);
-}
-
-/**
  * 修改时间戳
  *   fmt  例如：yyyy-MM-dd hh:mm:ss
  */

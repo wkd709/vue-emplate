@@ -1,0 +1,1 @@
+export const GET_TITLE = 'GET_TITLE'//获取title
